@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
 
     let Links = [
-        {name: "Home", link: "/"},
+        {name: "Home", link: "/"}, //links de ejemplo
         {name: "Nosotros", link: "/aboutus"}
         //añadir más links aquí
     ]
