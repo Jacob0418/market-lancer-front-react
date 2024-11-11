@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import {
   FaPencilAlt,
   FaBook,
@@ -10,6 +10,10 @@ import {
 import ServiceCategory from "../../../components/Home/ServiceCategory";
 
 const Writing = () => {
+    useEffect(() => {
+        // Desplaza la vista hacia arriba al cargar el componente porque iniciaba desde abajo
+        window.scrollTo(0, 0);
+      }, []); 
   const categories = [
     { name: "All", icon: <FaPencilAlt /> },
     { name: "Content Writing", icon: <FaFileAlt /> },
@@ -33,7 +37,7 @@ const Writing = () => {
       id: 2,
       title: "Persuasive Copywriting",
       category: "Copywriting",
-      image: "images.unsplash.com/photo-1554774853-4b36f62fc3e4",
+      image: "images.unsplash.com/photo-1544716278-ca5e3f4abd8c",
       rating: 4.8,
       price: 200,
       seller: "CopyPro",
@@ -53,7 +57,7 @@ const Writing = () => {
       id: 4,
       title: "Feature Articles",
       category: "Journalism",
-      image: "images.unsplash.com/photo-1496498807585-9d16d403f9b5",
+      image: "images.unsplash.com/photo-1524995997946-a1c2e315a42f",
       rating: 4.8,
       price: 180,
       seller: "NewsWrite",
