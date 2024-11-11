@@ -9,6 +9,7 @@ import Dont from "./pages/NewFreelancer/Dont";
 import Development from "./pages/main/Categories/Development";
 import Services from "./pages/main/Services";
 import Writing from "./pages/main/Categories/Writing";
+import Photography from "./pages/main/Categories/Photography";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/services/development" element={<Development />} />
         <Route path="/services/writing" element={<Writing />} />
+        <Route path="/services/photography" element={<Photography />} />
         <Route path='/services/:context' element={<Services />} />
         
         {/* Inicio New Vendedor */}

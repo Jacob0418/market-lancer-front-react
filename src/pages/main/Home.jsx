@@ -35,7 +35,7 @@ const Home = () => {
       icon: <FaCamera />,
       name: "Photography",
       count: "500+ Services",
-      nextClick: "/",
+      nextClick: "/services/photography",
     },
     {
       id: 4,
