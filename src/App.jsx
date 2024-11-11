@@ -10,6 +10,7 @@ import Development from "./pages/main/Categories/Development";
 import Services from "./pages/main/Services";
 import Writing from "./pages/main/Categories/Writing";
 import Photography from "./pages/main/Categories/Photography";
+import DigitalMarketing from "./pages/main/Categories/DigitalMarketing";
 
 function App() {
   return (
@@ -18,11 +19,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/services/development" element={<Development />} />
-        <Route path="/services/writing" element={<Writing />} />
-        <Route path="/services/photography" element={<Photography />} />
-        <Route path='/services/:context' element={<Services />} />
-        
+        <Route path="/categories/development" element={<Development />} />
+        <Route path="/categories/writing" element={<Writing />} />
+        <Route path="/categories/photography" element={<Photography />} />
+        <Route path="/categories/digital&marketing" element={<DigitalMarketing />} />
+        <Route path="/services/:context" element={<Services />} />
+
         {/* Inicio New Vendedor */}
         <Route path="/seller_onboarding/overview" element={<Overview />} />
         <Route path="/seller_onboarding/overview/do" element={<Do />} />
