@@ -11,6 +11,7 @@ import Services from "./pages/main/Services";
 import Writing from "./pages/main/Categories/Writing";
 import Photography from "./pages/main/Categories/Photography";
 import DigitalMarketing from "./pages/main/Categories/DigitalMarketing";
+import Design from "./pages/main/Categories/Desing";
 
 function App() {
   return (
@@ -22,7 +23,11 @@ function App() {
         <Route path="/categories/development" element={<Development />} />
         <Route path="/categories/writing" element={<Writing />} />
         <Route path="/categories/photography" element={<Photography />} />
-        <Route path="/categories/digital&marketing" element={<DigitalMarketing />} />
+        <Route
+          path="/categories/digital&marketing"
+          element={<DigitalMarketing />}
+        />
+        <Route path="/categories/design" element={<Design />} />
         <Route path="/services/:context" element={<Services />} />
 
         {/* Inicio New Vendedor */}
@@ -33,13 +38,14 @@ function App() {
         <Route path="/seller_onboarding/professional_info" element={<Home />} />
         <Route path="/seller_onboarding/account_security" element={<Home />} />
         {/* Fin New Vendedor */}
+
         {/* Inicio New Servicio */}
-        <Route path="/seller_onboarding/overview" element={<Home />} />
+        {/* <Route path="/seller_onboarding/overview" element={<Home />} />
         <Route path="/seller_onboarding/overview/do" element={<Home />} />
         <Route path="/seller_onboarding/overview/dont" element={<Home />} />
         <Route path="/seller_onboarding/personal_info" element={<Home />} />
         <Route path="/seller_onboarding/professional_info" element={<Home />} />
-        <Route path="/seller_onboarding/account_security" element={<Home />} />
+        <Route path="/seller_onboarding/account_security" element={<Home />} /> */}
         {/* Fin New Servicio */}
       </Routes>
     </BrowserRouter>

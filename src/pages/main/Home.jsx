@@ -44,7 +44,13 @@ const Home = () => {
       count: "900+ Services",
       nextClick: "/categories/digital&marketing",
     },
-    { id: 5, icon: <FaPalette />, name: "Design", count: "1.5k+ Services" },
+    {
+      id: 5,
+      icon: <FaPalette />,
+      name: "Design",
+      count: "1.5k+ Services",
+      nextClick: "/categories/design",
+    },
   ];
 
   const featuredServices = [
