@@ -56,7 +56,7 @@ const Home = () => {
       id: 2,
       title: "Logo Design",
       description: "Creative logo design to build your brand identity",
-      image: "images.unsplash.com/photo-1626785774625-0b1c2c4efd7c",
+      image: "images.unsplash.com/photo-1519389950473-47ba0277781c",
       price: "$299",
     },
     {
