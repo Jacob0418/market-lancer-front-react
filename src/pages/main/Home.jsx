@@ -9,8 +9,10 @@ import {
   FaPalette,
 } from "react-icons/fa";
 import { BsArrowRight } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const categories = [
@@ -19,29 +21,36 @@ const Home = () => {
       icon: <FaCode />,
       name: "Development",
       count: "1.2k+ Services",
-      nextClick: "/services/development",
+      nextClick: "/categories/development",
     },
     {
       id: 2,
       icon: <FaPencilAlt />,
       name: "Writing",
       count: "800+ Services",
-      nextClick: "",
+      nextClick: "/categories/writing",
     },
     {
       id: 3,
       icon: <FaCamera />,
       name: "Photography",
       count: "500+ Services",
-      nextClick: "/",
+      nextClick: "/categories/photography",
     },
     {
       id: 4,
       icon: <FaLaptop />,
       name: "Digital Marketing",
       count: "900+ Services",
+      nextClick: "/categories/digital&marketing",
     },
-    { id: 5, icon: <FaPalette />, name: "Design", count: "1.5k+ Services" },
+    {
+      id: 5,
+      icon: <FaPalette />,
+      name: "Design",
+      count: "1.5k+ Services",
+      nextClick: "/categories/design",
+    },
   ];
 
   const featuredServices = [
@@ -51,6 +60,7 @@ const Home = () => {
       description: "Professional web development services for your business",
       image: "images.unsplash.com/photo-1461749280684-dccba630e2f6",
       price: "$499",
+      nextClick: "/categories/development",
     },
     {
       id: 2,
@@ -58,6 +68,7 @@ const Home = () => {
       description: "Creative logo design to build your brand identity",
       image: "images.unsplash.com/photo-1519389950473-47ba0277781c",
       price: "$299",
+      nextClick: "/categories/design",
     },
     {
       id: 3,
@@ -65,6 +76,7 @@ const Home = () => {
       description: "SEO-optimized content for your website and blog",
       image: "images.unsplash.com/photo-1455390582262-044cdead277a",
       price: "$199",
+      nextClick: "/categories/writing",
     },
   ];
 
@@ -152,7 +164,7 @@ const Home = () => {
           {categories.map((category) => (
             <motion.div
               key={category.id}
-              onClick={() => (window.location.href = category.nextClick)}
+              onClick={() => navigate(category.nextClick)}
               whileHover={{ scale: 1.05 }}
               className="bg-white p-6 rounded-xl shadow-lg text-center cursor-pointer transition-all duration-300"
             >
@@ -174,6 +186,8 @@ const Home = () => {
             {featuredServices.map((service) => (
               <motion.div
                 key={service.id}
+                onClick={() => navigate(service.nextClick)}
+
                 whileHover={{ y: -10 }}
                 className="bg-white rounded-xl overflow-hidden shadow-lg"
               >
