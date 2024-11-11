@@ -6,8 +6,9 @@ import "@fontsource/overpass";
 import Overview from "./pages/NewFreelancer/Overview";
 import Do from "./pages/NewFreelancer/Do";
 import Dont from "./pages/NewFreelancer/Dont";
-import Development from "./pages/main/Development";
+import Development from "./pages/main/Categories/Development";
 import Services from "./pages/main/Services";
+import Writing from "./pages/main/Categories/Writing";
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/services/development" element={<Development />} />
+        <Route path="/services/writing" element={<Writing />} />
         <Route path='/services/:context' element={<Services />} />
+        
         {/* Inicio New Vendedor */}
         <Route path="/seller_onboarding/overview" element={<Overview />} />
         <Route path="/seller_onboarding/overview/do" element={<Do />} />

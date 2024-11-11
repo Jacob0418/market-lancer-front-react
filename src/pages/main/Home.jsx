@@ -9,8 +9,10 @@ import {
   FaPalette,
 } from "react-icons/fa";
 import { BsArrowRight } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const categories = [
@@ -26,7 +28,7 @@ const Home = () => {
       icon: <FaPencilAlt />,
       name: "Writing",
       count: "800+ Services",
-      nextClick: "",
+      nextClick: "/services/writing",
     },
     {
       id: 3,
@@ -152,7 +154,7 @@ const Home = () => {
           {categories.map((category) => (
             <motion.div
               key={category.id}
-              onClick={() => (window.location.href = category.nextClick)}
+              onClick={() => navigate(category.nextClick)}
               whileHover={{ scale: 1.05 }}
               className="bg-white p-6 rounded-xl shadow-lg text-center cursor-pointer transition-all duration-300"
             >
