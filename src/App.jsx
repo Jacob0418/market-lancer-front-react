@@ -12,6 +12,7 @@ import Writing from "./pages/main/Categories/Writing";
 import Photography from "./pages/main/Categories/Photography";
 import DigitalMarketing from "./pages/main/Categories/DigitalMarketing";
 import Design from "./pages/main/Categories/Desing";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path="/seller_onboarding/account_security" element={<Home />} /> */}
         {/* Fin New Servicio */}
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }

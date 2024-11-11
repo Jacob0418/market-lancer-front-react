@@ -60,6 +60,7 @@ const Home = () => {
       description: "Professional web development services for your business",
       image: "images.unsplash.com/photo-1461749280684-dccba630e2f6",
       price: "$499",
+      nextClick: "/categories/development",
     },
     {
       id: 2,
@@ -67,6 +68,7 @@ const Home = () => {
       description: "Creative logo design to build your brand identity",
       image: "images.unsplash.com/photo-1519389950473-47ba0277781c",
       price: "$299",
+      nextClick: "/categories/design",
     },
     {
       id: 3,
@@ -74,6 +76,7 @@ const Home = () => {
       description: "SEO-optimized content for your website and blog",
       image: "images.unsplash.com/photo-1455390582262-044cdead277a",
       price: "$199",
+      nextClick: "/categories/writing",
     },
   ];
 
@@ -183,6 +186,8 @@ const Home = () => {
             {featuredServices.map((service) => (
               <motion.div
                 key={service.id}
+                onClick={() => navigate(service.nextClick)}
+
                 whileHover={{ y: -10 }}
                 className="bg-white rounded-xl overflow-hidden shadow-lg"
               >
