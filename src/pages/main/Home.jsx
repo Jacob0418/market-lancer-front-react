@@ -14,9 +14,27 @@ const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const categories = [
-    { id: 1, icon: <FaCode />, name: "Development", count: "1.2k+ Services" },
-    { id: 2, icon: <FaPencilAlt />, name: "Writing", count: "800+ Services" },
-    { id: 3, icon: <FaCamera />, name: "Photography", count: "500+ Services" },
+    {
+      id: 1,
+      icon: <FaCode />,
+      name: "Development",
+      count: "1.2k+ Services",
+      nextClick: "/services/development",
+    },
+    {
+      id: 2,
+      icon: <FaPencilAlt />,
+      name: "Writing",
+      count: "800+ Services",
+      nextClick: "",
+    },
+    {
+      id: 3,
+      icon: <FaCamera />,
+      name: "Photography",
+      count: "500+ Services",
+      nextClick: "/",
+    },
     {
       id: 4,
       icon: <FaLaptop />,
@@ -134,6 +152,7 @@ const Home = () => {
           {categories.map((category) => (
             <motion.div
               key={category.id}
+              onClick={() => (window.location.href = category.nextClick)}
               whileHover={{ scale: 1.05 }}
               className="bg-white p-6 rounded-xl shadow-lg text-center cursor-pointer transition-all duration-300"
             >
