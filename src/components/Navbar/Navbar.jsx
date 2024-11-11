@@ -13,6 +13,7 @@ function Navbar() {
 
   let [open, setOpen] = useState(false); //estado para el menú hamburguesa
 
+
   return (
     <nav className="border shadow-sm w-full top-0 left-0 sticky">
       <div className="bg-white w-full top-0 sticky left-0">
@@ -49,6 +50,7 @@ function Navbar() {
       </div>
     </nav>
   );
+
 }
 
 export default Navbar;
