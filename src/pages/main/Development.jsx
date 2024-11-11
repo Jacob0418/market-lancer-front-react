@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FaChevronLeft,
   FaChevronRight,
@@ -14,6 +15,7 @@ import {
 const Development = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const navigate = useNavigate();
 
   const categories = [
     { name: "All", icon: <FaCode /> },
@@ -57,15 +59,15 @@ const Development = () => {
       description: "Enterprise cloud solutions and architecture design",
     },
     {
-        id: 4,
-        title: "Cloud Database",
-        category: "Database",
-        image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
-        rating: 4.7,
-        price: 599,
-        seller: "Canchesky Pro",
-        description: "Enterprise cloud solutions and Database design",
-      },
+      id: 4,
+      title: "Cloud Database",
+      category: "Database",
+      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+      rating: 4.7,
+      price: 599,
+      seller: "Canchesky Pro",
+      description: "Enterprise cloud solutions and Database design",
+    },
   ];
 
   const [filteredServices, setFilteredServices] = useState(services);
@@ -91,6 +93,9 @@ const Development = () => {
 
   const prevSlide = () => {
     setCarouselIndex((prev) => (prev === 0 ? categories.length - 3 : prev - 1));
+  };
+  const handleCardClick = (id, context) => {
+    navigate(`/services/${context}`, { state: { id } }); // Pasa el ID en el estado
   };
 
   return (
@@ -183,6 +188,8 @@ const Development = () => {
         {filteredServices.map((service) => (
           <div
             key={service.id}
+            onClick={() => handleCardClick(service.id, service.title)}
+            //onClick={() => window.location.href = `/services/${service.title}`}
             className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105"
           >
             <img
