@@ -56,6 +56,16 @@ const Development = () => {
       seller: "CloudTech Pro",
       description: "Enterprise cloud solutions and architecture design",
     },
+    {
+        id: 4,
+        title: "Cloud Database",
+        category: "Database",
+        image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+        rating: 4.7,
+        price: 599,
+        seller: "Canchesky Pro",
+        description: "Enterprise cloud solutions and Database design",
+      },
   ];
 
   const [filteredServices, setFilteredServices] = useState(services);
