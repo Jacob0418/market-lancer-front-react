@@ -15,7 +15,7 @@ function Navbar() {
 
 
   return (
-    <nav className="border shadow-sm w-full top-0 left-0 sticky">
+    <nav className="border shadow-sm w-full z-20 top-0 left-0 sticky">
       <div className="bg-white w-full top-0 sticky left-0">
         <div className=" space-x-2 flex flex-row items-center justify-end px-24 py-2">
           <img
