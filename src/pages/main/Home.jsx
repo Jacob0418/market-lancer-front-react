@@ -10,6 +10,13 @@ import {
 } from "react-icons/fa";
 import { BsArrowRight } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import img1 from "../../assets/img/img1.jpg";
+import img2 from "../../assets/img/img2.jpg";
+import img3 from "../../assets/img/img3.jpg";
+import img4 from "../../assets/img/img4.jpg";
+import img5 from "../../assets/img/img5.jpg";
+import img6 from "../../assets/img/img6.jpg";
+import img7 from "../../assets/img/img7.jpg";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -122,7 +129,7 @@ const Home = () => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c"
+            src={img1}
             alt="Hero background"
             className="w-full h-full object-cover"
           />
