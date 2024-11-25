@@ -114,6 +114,11 @@ const Home = () => {
     },
   ];
 
+  const scrollToSection = () => {
+    const targetSection = document.getElementById("services");
+    targetSection?.scrollIntoView({ behavior: "smooth" });
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) =>
@@ -156,6 +161,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300"
+            onClick={scrollToSection}
           >
             Explore Services
           </motion.button>
@@ -163,7 +169,7 @@ const Home = () => {
       </section>
 
       {/* Categories Section */}
-      <section className="py-20 px-4 max-w-7xl mx-auto">
+      <section id="services" className="py-20 px-4 max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-12">
           Popular Categories
         </h2>
@@ -194,7 +200,6 @@ const Home = () => {
               <motion.div
                 key={service.id}
                 onClick={() => navigate(service.nextClick)}
-
                 whileHover={{ y: -10 }}
                 className="bg-white rounded-xl overflow-hidden shadow-lg"
               >
