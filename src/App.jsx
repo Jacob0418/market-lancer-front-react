@@ -13,6 +13,7 @@ import Photography from "./pages/main/Categories/Photography";
 import DigitalMarketing from "./pages/main/Categories/DigitalMarketing";
 import Design from "./pages/main/Categories/Desing";
 import Footer from "./components/Footer/Footer";
+import LoginRegister from "./components/Login/LoginRegister";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/LoginRegister" element={<LoginRegister />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/categories/development" element={<Development />} />
         <Route path="/categories/writing" element={<Writing />} />
