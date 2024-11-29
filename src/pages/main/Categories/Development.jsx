@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import {
   FaCode,
   FaMobile,
@@ -8,12 +8,15 @@ import {
   FaGlobe,
 } from "react-icons/fa";
 import ServiceCategory from "../../../components/Home/ServiceCategory";
+import SendBirdChat from "../../../components/Chat/SendBirdChat";
+import Chat2 from "../../../components/Chat/SendBirdChat2";
+import Chat from "../../../components/Chat/Chat";
 
 const Development = () => {
-    useEffect(() => {
+  useEffect(() => {
     // Desplaza la vista hacia arriba al cargar el componente porque iniciaba desde abajo
     window.scrollTo(0, 0);
-  }, []); 
+  }, []);
   const categories = [
     { name: "All", icon: <FaCode /> },
     { name: "Web Development", icon: <FaGlobe /> },
@@ -68,12 +71,15 @@ const Development = () => {
   ];
 
   return (
-    <ServiceCategory
-      title="Development"
-      description="Discover top-rated development services tailored to your needs"
-      categories={categories}
-      services={services}
-    />
+    <>
+      <ServiceCategory
+        title="Development"
+        description="Discover top-rated development services tailored to your needs"
+        categories={categories}
+        services={services}
+      />
+      <Chat/>
+    </>
   );
 };
 

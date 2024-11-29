@@ -17,10 +17,28 @@ import img4 from "../../assets/img/img4.jpg";
 import img5 from "../../assets/img/img5.jpg";
 import img6 from "../../assets/img/img6.jpg";
 import img7 from "../../assets/img/img7.jpg";
+import ApiService from "../../API/GetEndPoints";
 
 const Home = () => {
   const navigate = useNavigate();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [example, setExample] = useState([]);
+
+  useEffect(() => {
+    const fetchExample = async () => {
+      try {
+        const data = await ApiService.getCategories();
+        setExample(data);
+      } catch (err) {
+        setError(err.message || "Something went wrong");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchExample();
+  }, []);
+  console.log(example);
 
   const categories = [
     {
