@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const ServiceCategory = ({ title, description, categories, services }) => {
+const ServiceCategory = ({ name, title, description, categories, services }) => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [filteredServices, setFilteredServices] = useState(services);
@@ -32,7 +32,7 @@ const ServiceCategory = ({ title, description, categories, services }) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-4">{title}</h1>
+      <h1 className="text-4xl font-bold mb-4">{name}</h1>
       <p className="text-gray-600 mb-8">{description}</p>
 
       {/* Categories Carousel */}
@@ -79,17 +79,17 @@ const ServiceCategory = ({ title, description, categories, services }) => {
         {filteredServices.map((service) => (
           <div
             key={service.id}
-            onClick={() => handleCardClick(service.id, service.title)}
+            onClick={() => handleCardClick(service.id, service.name)}
             className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105"
           >
             <img
               src={`https://${service.image}`}
-              alt={service.title}
+              alt={service.name}
               className="w-full h-48 object-cover"
             />
             <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-              <p className="text-gray-600 mb-4">{service.description}</p>
+              <h3 className="text-xl font-semibold mb-2">{service.name}</h3>
+              <p className="text-gray-600 mb-4"></p>
               <div className="flex items-center mb-4">
                 <div className="flex text-yellow-400">
                   {[...Array(5)].map((_, i) => (
@@ -103,13 +103,13 @@ const ServiceCategory = ({ title, description, categories, services }) => {
                     />
                   ))}
                 </div>
-                <span className="ml-2 text-gray-600">{service.rating}</span>
+                <span className="ml-2 text-gray-600">{service.title}</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-lg font-bold text-blue-600">
                   Starting at ${service.price}
                 </span>
-                <span className="text-sm text-gray-500">{service.seller}</span>
+                <span className="text-sm text-gray-500">{service.description}</span>
               </div>
             </div>
           </div>

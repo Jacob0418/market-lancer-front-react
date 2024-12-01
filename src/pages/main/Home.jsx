@@ -21,7 +21,7 @@ import ApiService from "../../API/GetEndPoints";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  /*const [currentTestimonial, setCurrentTestimonial] = useState(0); */
   const [example, setExample] = useState([]);
 
   useEffect(() => {
@@ -78,7 +78,7 @@ const Home = () => {
     },
   ];
 
-  const featuredServices = [
+  /* const featuredServices = [
     {
       id: 1,
       title: "Web Development",
@@ -103,48 +103,68 @@ const Home = () => {
       price: "$199",
       nextClick: "/categories/writing",
     },
-  ];
+  ]; */
+  
+  //Featured Services
+  const [featuredServices, setFeaturedServices] = useState([]);
 
-  const testimonials = [
-    {
-      id: 1,
-      name: "John Smith",
-      role: "Business Owner",
-      content: "Found amazing talent for my project. Highly recommended!",
-      avatar: "images.unsplash.com/photo-1472099645785-5658abf4ff4e",
-      rating: 5,
-    },
-    {
-      id: 2,
-      name: "Sarah Johnson",
-      role: "Startup Founder",
-      content: "Great platform for finding skilled freelancers quickly.",
-      avatar: "images.unsplash.com/photo-1438761681033-6461ffad8d80",
-      rating: 5,
-    },
-    {
-      id: 3,
-      name: "Michael Brown",
-      role: "Project Manager",
-      content: "Excellent quality of work and professional communication.",
-      avatar: "images.unsplash.com/photo-1500648767791-00dcc994a43e",
-      rating: 5,
-    },
-  ];
+  useEffect(() => {
+    const fetchFeaturedServices = async () => {
+      try {
+        const data = await ApiService.getCategories();
+        const enrichedData = data.result.map((service) => ({
+          ...service,
+          nextClick: `/categories/${service.name}`, // Genera un nextClick dinámico
+        }));
+        setFeaturedServices(enrichedData);
+      } catch (err) {
+        setError(err.message || "Error al obtener servicios destacados");
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchFeaturedServices();
+  }, []);
+  
 
   const scrollToSection = () => {
     const targetSection = document.getElementById("services");
     targetSection?.scrollIntoView({ behavior: "smooth" });
   };
 
+  //Testimonials
+  const [testimonials, setTestimonials] = useState([]);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) =>
-        prev === testimonials.length - 1 ? 0 : prev + 1
-      );
-    }, 5000);
-    return () => clearInterval(interval);
+    const fetchTestimonials = async () => {
+      try {
+        const data = await ApiService.getCategories(); //Cambiar getCategories por testimonials o como llamen el endpoint
+        setTestimonials(data.result || []);
+      } catch (err) {
+        setError(err.message || "Fallo al optener testimonios");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTestimonials();
   }, []);
+
+  useEffect(() => {
+    if (testimonials.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentTestimonial((prev) =>
+          prev === testimonials.length - 1 ? 0 : prev + 1
+        );
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [testimonials.length]);
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -228,12 +248,12 @@ const Home = () => {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">
-                    {service.title}
+                    {service.name}
                   </h3>
-                  <p className="text-gray-600 mb-4">{service.description}</p>
+                  <p className="text-gray-600 mb-4">{service.name}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-blue-600 font-bold">
-                      {service.price}
+                      {service.name}
                     </span>
                     <button className="flex items-center text-blue-600 hover:text-blue-700">
                       View Details <BsArrowRight className="ml-2" />
@@ -253,36 +273,30 @@ const Home = () => {
             What Our Users Say
           </h2>
           <div className="relative overflow-hidden">
-            <motion.div
-              animate={{ x: `-${currentTestimonial * 100}%` }}
-              transition={{ duration: 0.5 }}
-              className="flex"
-            >
-              {testimonials.map((testimonial) => (
-                <div
-                  key={testimonial.id}
-                  className="w-full flex-shrink-0 px-4 md:px-20"
-                >
-                  <div className="bg-white p-8 rounded-xl shadow-lg text-center">
-                    <img
-                      src={`https://${testimonial.avatar}`}
-                      alt={testimonial.name}
-                      className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
-                    />
-                    <p className="text-gray-600 text-lg mb-4">
-                      {testimonial.content}
-                    </p>
-                    <div className="flex justify-center mb-2">
-                      {[...Array(testimonial.rating)].map((_, index) => (
-                        <FaStar key={index} className="text-yellow-400" />
-                      ))}
+            {loading && <p>Loading testimonials...</p>}
+            {Array.isArray(testimonials) && testimonials.length > 0 ? (
+              <motion.div
+                animate={{ x: `-${currentTestimonial * 100}%` }}
+                transition={{ duration: 0.5 }}
+                className="flex"
+              >
+                {testimonials.map((testimonial) => (
+                  <div
+                    key={testimonial.id}
+                    className="w-full flex-shrink-0 px-4 md:px-20"
+                  >
+                    <div className="bg-white p-8 rounded-xl shadow-lg text-center">
+                      <p className="text-gray-600 text-lg mb-4">
+                        {testimonial.name}
+                      </p>
+                      <h4 className="font-semibold">{testimonial.name}</h4>
                     </div>
-                    <h4 className="font-semibold">{testimonial.name}</h4>
-                    <p className="text-gray-500">{testimonial.role}</p>
                   </div>
-                </div>
-              ))}
-            </motion.div>
+                ))}
+              </motion.div>
+            ) : (
+              !loading && <p>No testimonials available.</p>
+            )}
           </div>
         </div>
       </section>
