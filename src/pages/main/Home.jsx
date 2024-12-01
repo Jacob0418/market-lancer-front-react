@@ -111,7 +111,7 @@ const Home = () => {
   useEffect(() => {
     const fetchFeaturedServices = async () => {
       try {
-        const data = await ApiService.getCategories();
+        const data = await ApiService.getServices();
         const enrichedData = data.result.map((service) => ({
           ...service,
           nextClick: `/categories/${service.name}`, // Genera un nextClick dinámico
@@ -126,7 +126,7 @@ const Home = () => {
   
     fetchFeaturedServices();
   }, []);
-  
+  console.log(featuredServices);
 
   const scrollToSection = () => {
     const targetSection = document.getElementById("services");
@@ -142,7 +142,7 @@ const Home = () => {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const data = await ApiService.getCategories(); //Cambiar getCategories por testimonials o como llamen el endpoint
+        const data = await ApiService.getReviews(); //Cambiar getCategories por testimonials o como llamen el endpoint
         setTestimonials(data.result || []);
       } catch (err) {
         setError(err.message || "Fallo al optener testimonios");
@@ -153,6 +153,7 @@ const Home = () => {
 
     fetchTestimonials();
   }, []);
+  console.log(testimonials);
 
   useEffect(() => {
     if (testimonials.length > 0) {
@@ -248,12 +249,12 @@ const Home = () => {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">
-                    {service.name}
+                    {service.subCategory}
                   </h3>
-                  <p className="text-gray-600 mb-4">{service.name}</p>
+                  <p className="text-gray-600 mb-4">{service.description}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-blue-600 font-bold">
-                      {service.name}
+                      ${service.price}
                     </span>
                     <button className="flex items-center text-blue-600 hover:text-blue-700">
                       View Details <BsArrowRight className="ml-2" />
@@ -280,19 +281,30 @@ const Home = () => {
                 transition={{ duration: 0.5 }}
                 className="flex"
               >
-                {testimonials.map((testimonial) => (
-                  <div
-                    key={testimonial.id}
-                    className="w-full flex-shrink-0 px-4 md:px-20"
-                  >
-                    <div className="bg-white p-8 rounded-xl shadow-lg text-center">
-                      <p className="text-gray-600 text-lg mb-4">
-                        {testimonial.name}
-                      </p>
-                      <h4 className="font-semibold">{testimonial.name}</h4>
+              {testimonials.map((testimonial) => (
+                <div
+                  key={testimonial.id}
+                  className="w-full flex-shrink-0 px-4 md:px-20"
+                >
+                  <div className="bg-white p-8 rounded-xl shadow-lg text-center">
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.user.name}
+                      className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+                    />
+                    <p className="text-gray-600 text-lg mb-4">
+                      {testimonial.content}
+                    </p>
+                    <div className="flex justify-center mb-2">
+                      {[...Array(testimonial.rating)].map((_, index) => (
+                        <FaStar key={index} className="text-yellow-400" />
+                      ))}
                     </div>
+                    <h4 className="font-semibold">{testimonial.user.name}</h4>
+                    <p className="text-gray-500">{testimonial.role}</p>
                   </div>
-                ))}
+                </div>
+              ))}
               </motion.div>
             ) : (
               !loading && <p>No testimonials available.</p>

@@ -14,6 +14,7 @@ import DigitalMarketing from "./pages/main/Categories/DigitalMarketing";
 import Design from "./pages/main/Categories/Desing";
 import Footer from "./components/Footer/Footer";
 import LoginRegister from "./components/Login/LoginRegister";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
         <Route path="/seller_onboarding/professional_info" element={<Home />} />
         <Route path="/seller_onboarding/account_security" element={<Home />} /> */}
         {/* Fin New Servicio */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer/>
     </BrowserRouter>

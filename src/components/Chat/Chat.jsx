@@ -10,10 +10,11 @@ import {
 } from "react-icons/fa";
 import SendBirdChat from "./SendBirdChat";
 import { App as SendBirdApp } from "sendbird-uikit";
+import { FiMinimize2 } from "react-icons/fi";
 import "sendbird-uikit/dist/index.css";
 
-const Chat = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Chat = ({isOpen, onClose}) => {
+  // const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -36,19 +37,21 @@ const Chat = () => {
   const messageInputRef = useRef(null);
   const chatContainerRef = useRef(null);
 
-  const toggleModal = () => {
-    setIsOpen(!isOpen);
-    setIsMinimized(false);
-    setUnreadCount(0);
-  };
+  // const toggleModal = () => {
+  //   setIsOpen(!isOpen);
+  //   setIsMinimized(false);
+  //   setUnreadCount(0);
+  // };
 
   const handleMinimize = () => {
     setIsMinimized(true);
   };
 
+  if (!isOpen) return null;
+
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      {!isOpen && (
+      {/* {!isOpen && (
         <button
           onClick={toggleModal}
           className="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 flex items-center shadow-lg transition-all duration-300"
@@ -61,14 +64,14 @@ const Chat = () => {
             </span>
           )}
         </button>
-      )}
+      )} */}
 
-      {isOpen && (
+      {/* {isOpen && ( */}
         <>
           <Draggable handle=".drag-handle">
             <div
-              className={`bg-white rounded-lg shadow-2xl w-96 transition-all duration-300 ${
-                isMinimized ? "h-14" : "h-[600px]"
+              className={`bg-white rounded-lg shadow-2xl w-[590px] md:w-[790px] transition-all duration-300 ${
+                isMinimized ? "h-14" : "h-[470px] w-[590px] md:h-[670px] md:w-[790px]"
               }`}
               role="dialog"
               aria-modal="true"
@@ -92,12 +95,12 @@ const Chat = () => {
                     className="hover:bg-blue-700 p-2 rounded-full"
                     aria-label="Minimizar chat"
                   >
-                    <FaBell className="text-lg" />
+                    <FiMinimize2 className="text-lg" />
                   </button>
 
                   {/* Botón de cerrar */}
                   <button
-                    onClick={toggleModal}
+                    onClick={onClose}
                     className="hover:bg-blue-700 p-2 rounded-full"
                     aria-label="Cerrar chat"
                   >
@@ -116,7 +119,7 @@ const Chat = () => {
             </div>
           </Draggable>
         </>
-      )}
+      {/* )} */}
     </div>
   );
 };

@@ -265,6 +265,39 @@ const ApiService = {
     }
   },
   // ================FIN IMAGE==============
+
+  // ================INI SERVICES==============
+  getServices: async () => {
+    try {
+      const response = await axiosInstance.get(API_ENDPOINTS.SERVICE.GET_ALL);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching services:", error);
+      throw error;
+    }
+  },
+
+  getServiceById: async (id) => {
+    try {
+      const response = await axiosInstance.get(
+        API_ENDPOINTS.SERVICE.GET_BY_ID(id)
+      );
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching service with ID ${id}:`, error);
+      throw error;
+    }
+  },
+
+  getReviews: async () => {
+    try {
+      const response = await axiosInstance.get(API_ENDPOINTS.REVIEW.GET);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching reviews:", error);
+      throw error;
+    }
+  }
 };
 
 export default ApiService;

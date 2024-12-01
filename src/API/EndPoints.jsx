@@ -79,7 +79,7 @@ export const API_ENDPOINTS = {
     GET: `${BASE_URL}/api/user/allUser`,
     GET_BY_ID: (userId) => `${BASE_URL}/api/user/userById/${userId}`,
     CREATE: `${BASE_URL}/api/user/createUser`,
-    UPDATE: `${BASE_URL}/api/user/updateUser`,
+    UPDATE: (userId) => `${BASE_URL}/api/user/updateUser/${userId}`,
     DELETE: (userId) => `${BASE_URL}/api/user/deleteUser/${userId}`,
     GET_BY_EMAIL: (email) => `${BASE_URL}/api/user/getUserByEmail/${email}`,
   },
