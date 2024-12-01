@@ -1,5 +1,6 @@
-const BASE_URL = "http://localhost:5000";
-//const BASE_URL = "https://market-lancer-back-dotnet-production-b498.up.railway.app";
+const BASE_URL = "https://market-lancer-back-dotnet-production-b498.up.railway.app";
+const BASE_URL2 = "http://localhost:5000";
+
 
 export const API_ENDPOINTS = {
   //CATEGORY
@@ -48,8 +49,8 @@ export const API_ENDPOINTS = {
   },
   //LOGIN
   LOGIN: {
-    ENTER: `${BASE_URL}/api/login/`, // Endpoint para iniciar sesión
-    CONFIRM_CODE: `${BASE_URL}/api/login/confirm`,
+    ENTER: `${BASE_URL2}/api/login/`, // Endpoint para iniciar sesión
+    CONFIRM_CODE: `${BASE_URL2}/api/login/confirm`,
   },
   //REVIEW
   REVIEW: {
@@ -81,7 +82,7 @@ export const API_ENDPOINTS = {
     GET: `${BASE_URL}/api/user/allUser`,
     GET_BY_ID: (userId) => `${BASE_URL}/api/user/userById/${userId}`,
     CREATE: `${BASE_URL}/api/user/createUser`,
-    UPDATE: `${BASE_URL}/api/user/updateUser`,
+    UPDATE: (userId) => `${BASE_URL}/api/user/updateUser/${userId}`,
     DELETE: (userId) => `${BASE_URL}/api/user/deleteUser/${userId}`,
     GET_BY_EMAIL: (email) => `${BASE_URL}/api/user/getUserByEmail/${email}`,
   },

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaCode,
   FaMobile,
@@ -11,6 +11,7 @@ import ServiceCategory from "../../../components/Home/ServiceCategory";
 import SendBirdChat from "../../../components/Chat/SendBirdChat";
 import Chat2 from "../../../components/Chat/SendBirdChat2";
 import Chat from "../../../components/Chat/Chat";
+import ApiService from "../../../API/GetEndPoints";
 
 const Development = () => {
   useEffect(() => {
@@ -25,6 +26,25 @@ const Development = () => {
     { name: "Cloud Services", icon: <FaCloud /> },
     { name: "Desktop Apps", icon: <FaDesktop /> },
   ];
+
+  const [service, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchServices = async ( ) => {
+      try {
+        const data = await ApiService.getServices();
+        setServices(data);
+      } catch (err) {
+        setError(err.message || "Something went wrong");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchServices();
+  }, []);
+  console.log('servicios', service);
+  
 
   const services = [
     {
