@@ -110,7 +110,7 @@ const Chat = () => {
               <div className="App" style={{ height: 600, width: 800 }}>
                 <SendBirdApp
                   appId="0F6B0070-9F2D-4B75-A2A1-6E5AF6625473"
-                  userId="Valier"
+                  userId="Valier"//variable del usuario
                 />
               </div>
             </div>

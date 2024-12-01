@@ -1,4 +1,5 @@
-const BASE_URL = "https://market-lancer-back-dotnet-production-b498.up.railway.app";
+const BASE_URL = "http://localhost:5000";
+//const BASE_URL = "https://market-lancer-back-dotnet-production-b498.up.railway.app";
 
 export const API_ENDPOINTS = {
   //CATEGORY
@@ -47,7 +48,8 @@ export const API_ENDPOINTS = {
   },
   //LOGIN
   LOGIN: {
-    POST: `${BASE_URL}/api/login/login`, // Endpoint para iniciar sesión
+    ENTER: `${BASE_URL}/api/login/`, // Endpoint para iniciar sesión
+    CONFIRM_CODE: `${BASE_URL}/api/login/confirm`,
   },
   //REVIEW
   REVIEW: {

@@ -110,14 +110,14 @@ const ApiService = {
   },
 
   updateChat: async (chatId, chatData) => {
-    try{
-    const response = await axiosInstance.put(
-      API_ENDPOINTS.CHAT.UPDATE,
-      chatData
-    );
-    return response.data;}
-    catch (error) {
-        console.error(`Error updating chat with ID ${chatId}:`, error);
+    try {
+      const response = await axiosInstance.put(
+        API_ENDPOINTS.CHAT.UPDATE,
+        chatData
+      );
+      return response.data;
+    } catch (error) {
+      console.error(`Error updating chat with ID ${chatId}:`, error);
       throw error; // Lanza el error para que el componente lo maneje
     }
   },
@@ -265,6 +265,105 @@ const ApiService = {
     }
   },
   // ================FIN IMAGE==============
+
+  // ================INI LOGIN==============
+  login: async (loginData) => {
+    try {
+      const response = await axiosInstance.post(
+        API_ENDPOINTS.LOGIN.ENTER,
+        loginData
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Login Error:", error);
+      throw error.response ? error.response.data : error.message;
+    }
+  },
+  loginConfirm: async (confirmData) => {
+    try {
+      const response = await axiosInstance.post(
+        API_ENDPOINTS.LOGIN.CONFIRM_CODE,confirmData
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Login Error:", error);
+      throw error.response ? error.response.data : error.message;
+    }
+  },
+  // ================FIN LOGIN==============
+
+  // ================INI USER==============
+  getUsers: async () => {
+    try {
+      const response = await axiosInstance.get(API_ENDPOINTS.USER.GET);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      throw error.response ? error.response.data : error.message;
+    }
+  },
+
+  getUserById: async (userId) => {
+    try {
+      const response = await axiosInstance.get(
+        API_ENDPOINTS.USER.GET_BY_ID(userId)
+      );
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching user with ID ${userId}:`, error);
+      throw error.response ? error.response.data : error.message;
+    }
+  },
+
+  createUser: async (userData) => {
+    try {
+      const response = await axiosInstance.post(
+        API_ENDPOINTS.USER.CREATE,
+        userData
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error creating user:", error);
+      throw error.response ? error.response.data : error.message;
+    }
+  },
+
+  updateUser: async (userId, userData) => {
+    try {
+      const response = await axiosInstance.put(API_ENDPOINTS.USER.UPDATE, {
+        userId,
+        ...userData,
+      });
+      return response.data;
+    } catch (error) {
+      console.error(`Error updating user with ID ${userId}:`, error);
+      throw error.response ? error.response.data : error.message;
+    }
+  },
+
+  deleteUser: async (userId) => {
+    try {
+      const response = await axiosInstance.delete(
+        API_ENDPOINTS.USER.DELETE(userId)
+      );
+      return response.data;
+    } catch (error) {
+      console.error(`Error deleting user with ID ${userId}:`, error);
+      throw error.response ? error.response.data : error.message;
+    }
+  },
+
+  getUserByEmail: async (email) => {
+    try {
+      const response = await axiosInstance.get(
+        API_ENDPOINTS.USER.GET_BY_EMAIL(email)
+      );
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching user with email ${email}:`, error);
+      throw error.response ? error.response.data : error.message;
+    }
+  },
 };
 
 export default ApiService;
