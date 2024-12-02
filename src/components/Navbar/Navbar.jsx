@@ -17,8 +17,11 @@ function Navbar() {
 
   const logout = () => {
     localStorage.removeItem("typeRole");
+    localStorage.removeItem("isLogin");
+    localStorage.removeItem("id_user");
+
     window.location.href = "/";
-  }
+  };
 
   let [open, setOpen] = useState(false); //estado para el menú hamburguesa
   const [chatOpen, setChatOpen] = useState(false);
@@ -106,7 +109,7 @@ function Navbar() {
                   <LuLogOut className="text-[#404145] text-xl hover:text-[#19A463] mt-2 ml-3 md:ml-4 md:mt-0" />
                 </button>
               )}
-              {role && role !== 'client' && role!== 'freelancer' && (
+              {role && role !== "client" && role !== "freelancer" && (
                 <button
                   onClick={() => (window.location.href = "/LoginRegister")}
                   className="items-center border border-[#19A463] text-[#19A463] rounded-[5px_5px_5px_5px] md:ml-8 w-16 hover:bg-[#19A463] hover:text-white hover:scale-110 p-1 mt-3 md:mt-0"

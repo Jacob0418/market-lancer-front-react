@@ -54,7 +54,12 @@ function App() {
         <Route path="/seller_onboarding/overview/dont" element={<Dont />} />
         <Route
           path="/seller_onboarding/personal_info"
-          element={<RegisterFreelancer />}
+          element={
+            <PrivateRoute
+              component={<RegisterFreelancer />}
+              requiredRole={["client", "freelancer"]}
+            />
+          }
         />
         <Route path="/freelancer/dashboard" element={<FreelancerDashboard />} />
         <Route path="/seller_onboarding/account_security" element={<Home />} />
