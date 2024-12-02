@@ -1,6 +1,6 @@
 const BASE_URL =
   "https://market-lancer-back-dotnet-production-b498.up.railway.app";
-const BASE_URL2 = "https://backend-marketlancer.onrender.com";
+const BASE_URL2 = "http://localhost:5000";
 
 export const API_ENDPOINTS = {
   //CATEGORY
@@ -80,7 +80,7 @@ export const API_ENDPOINTS = {
   //USER
   USER: {
     GET: `${BASE_URL}/api/user/allUser`,
-    GET_BY_ID: (userId) => `${BASE_URL}/api/user/userById/${userId}`,
+    GET_BY_ID: (userId) => `${BASE_URL2}/api/user/${userId}`,
     CREATE: `${BASE_URL}/api/user/createUser`,
     UPDATE: (userId) => `${BASE_URL}/api/user/updateUser/${userId}`,
     DELETE: (userId) => `${BASE_URL}/api/user/deleteUser/${userId}`,

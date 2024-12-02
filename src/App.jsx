@@ -17,7 +17,7 @@ import LoginRegister from "./components/Login/LoginRegister";
 import NotFound from "./pages/NotFound/NotFound";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import RegisterFreelancer from "./pages/NewFreelancer/RegisterFreelancer";
-import FreelancerDashboard from "./pages/Dashboards/FreeDashboard";
+import FreelancerDashboard from "./pages/Dashboards/FreelancerDashboard";
 
 function App() {
   const role = localStorage.getItem("typeRole");

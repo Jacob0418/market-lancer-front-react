@@ -38,7 +38,6 @@ function Navbar() {
   const navOptions = {
     freelancer: [
       { name: "Home", link: "/" },
-      { name: "My profile", link: "/profile" },
       { name: "Dashboard", link: "freelancer/dashboard" },
     ],
     client: [
