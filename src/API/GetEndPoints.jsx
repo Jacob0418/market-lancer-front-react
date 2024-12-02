@@ -315,7 +315,8 @@ const ApiService = {
   loginConfirm: async (confirmData) => {
     try {
       const response = await axiosInstance.post(
-        API_ENDPOINTS.LOGIN.CONFIRM_CODE,confirmData
+        API_ENDPOINTS.LOGIN.CONFIRM_CODE,
+        confirmData
       );
       return response.data;
     } catch (error) {
@@ -394,6 +395,18 @@ const ApiService = {
       return response.data;
     } catch (error) {
       console.error(`Error fetching user with email ${email}:`, error);
+      throw error.response ? error.response.data : error.message;
+    }
+  },
+  addInfoUser: async (formData) => {
+    try {
+      const response = await axiosInstance.post(
+        API_ENDPOINTS.USER.AddUserInfo,
+        formData
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Login Error:", error);
       throw error.response ? error.response.data : error.message;
     }
   },

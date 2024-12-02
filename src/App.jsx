@@ -15,6 +15,7 @@ import Design from "./pages/main/Categories/Desing";
 import Footer from "./components/Footer/Footer";
 import LoginRegister from "./components/Login/LoginRegister";
 import NotFound from "./pages/NotFound/NotFound";
+import RegisterFreelancer from "./pages/NewFreelancer/RegisterFreelancer";
 
 function App() {
   return (
@@ -38,7 +39,10 @@ function App() {
         <Route path="/seller_onboarding/overview" element={<Overview />} />
         <Route path="/seller_onboarding/overview/do" element={<Do />} />
         <Route path="/seller_onboarding/overview/dont" element={<Dont />} />
-        <Route path="/seller_onboarding/personal_info" element={<Home />} />
+        <Route
+          path="/seller_onboarding/personal_info"
+          element={<RegisterFreelancer />}
+        />
         <Route path="/seller_onboarding/professional_info" element={<Home />} />
         <Route path="/seller_onboarding/account_security" element={<Home />} />
         {/* Fin New Vendedor */}
@@ -53,7 +57,7 @@ function App() {
         {/* Fin New Servicio */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 }

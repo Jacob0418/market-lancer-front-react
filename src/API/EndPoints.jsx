@@ -85,5 +85,6 @@ export const API_ENDPOINTS = {
     UPDATE: (userId) => `${BASE_URL}/api/user/updateUser/${userId}`,
     DELETE: (userId) => `${BASE_URL}/api/user/deleteUser/${userId}`,
     GET_BY_EMAIL: (email) => `${BASE_URL}/api/user/getUserByEmail/${email}`,
+    AddUserInfo: `${BASE_URL2}/api/user/addInfo`,
   },
 };

@@ -113,6 +113,8 @@ const LoginRegister = () => {
       if (data.status) {
         setErrorMessage("");
         localStorage.setItem("isLogin", JSON.stringify(true));
+        localStorage.setItem("id_user", codeData.id);
+
         if (data.respuesta.id_role_id == 3) {
           localStorage.setItem("typeRole", "admin");
         } else if (data.id_role_id == 2) {
@@ -122,7 +124,7 @@ const LoginRegister = () => {
         }
         const typeRole = localStorage.getItem("typeRole"); // Devuelve el rol como string
         console.log("rol---> ", typeRole);
-        //window.location.href = "/";
+        window.location.href = "/";
       } else {
         setErrorMessage(
           "El Codigo no es correcto. Por favor, inténtalo de nuevo."
