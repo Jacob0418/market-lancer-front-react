@@ -6,6 +6,7 @@ import logo from "../../assets/img/logo-2-ml-blank.jpeg";
 import { isDragActive } from "framer-motion";
 import Chat from "../Chat/Chat";
 import { FaComments } from "react-icons/fa";
+import { LuLogOut } from "react-icons/lu";
 
 function Navbar() {
   let Links = [
@@ -14,9 +15,14 @@ function Navbar() {
     //añadir más links aquí
   ];
 
+  const logout = () => {
+    localStorage.removeItem("typeRole");
+    window.location.href = "/";
+  }
+
   let [open, setOpen] = useState(false); //estado para el menú hamburguesa
   const [chatOpen, setChatOpen] = useState(false);
-  const [role, setRole] = useState(null);
+  const [role, setRole] = useState(localStorage.getItem("typeRole") || null);
 
   const toggleChat = () => {
     setChatOpen(!chatOpen);
@@ -53,7 +59,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="border shadow-sm w-full z-20 top-0 left-0 sticky">
+      <nav className="border shadow-sm w-full z-[100] top-0 left-0 sticky">
         <div className="bg-white w-full top-0 sticky left-0">
           <div className=" space-x-2 flex flex-row items-center justify-end md:px-24 px-4 py-2">
             <img
@@ -95,43 +101,18 @@ function Navbar() {
                   <FaComments className="text-[#404145] text-xl hover:text-[#19A463] ml-3" />
                 </button>
               )}
-              {!role && (
-                <>
-                  <li>
-                    <NavLink
-                      to="/"
-                      className={({ isActive }) =>
-                        `flex p-2 items-center text-[#19A463] hover:text-[#19A463] ${
-                          isActive
-                            ? "text-[#19A463] font-bold border-b-2 md:w-24 md: flex md:justify-center w-24 border-[#19A463]"
-                            : "text-[#404145]"
-                        }`
-                      }
-                    >
-                      Home
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/aboutus"
-                      className={({ isActive }) =>
-                        `flex p-2 items-center text-[#19A463] hover:text-[#19A463] ${
-                          isActive
-                            ? "text-[#19A463] font-bold border-b-2 md:w-24 md: flex md:justify-center w-24 border-[#19A463]"
-                            : "text-[#404145]"
-                        }`
-                      }
-                    >
-                      About us
-                    </NavLink>
-                  </li>
-                  <button
-                    onClick={() => (window.location.href = "/LoginRegister")}
-                    className="items-center border border-[#19A463] text-[#19A463] rounded-[5px_5px_5px_5px] md:ml-8 w-16 hover:bg-[#19A463] hover:text-white hover:scale-110 p-1 mt-3 md:mt-0"
-                  >
-                    Login
-                  </button>
-                </>
+              {(role === "freelancer" || role === "client") && (
+                <button onClick={logout} className="flex md:flex-row">
+                  <LuLogOut className="text-[#404145] text-xl hover:text-[#19A463] mt-2 ml-3 md:ml-4 md:mt-0" />
+                </button>
+              )}
+              {role && role !== 'client' && role!== 'freelancer' && (
+                <button
+                  onClick={() => (window.location.href = "/LoginRegister")}
+                  className="items-center border border-[#19A463] text-[#19A463] rounded-[5px_5px_5px_5px] md:ml-8 w-16 hover:bg-[#19A463] hover:text-white hover:scale-110 p-1 mt-3 md:mt-0"
+                >
+                  Log in
+                </button>
               )}
               {role === "client" && (
                 <button

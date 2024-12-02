@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import RegisterFreelancer from "./pages/NewFreelancer/RegisterFreelancer";
 import FreelancerDashboard from "./pages/Dashboards/FreelancerDashboard";
+import ProfileSection from "./components/Dashboard/ProfileSection";
 
 function App() {
   const role = localStorage.getItem("typeRole");
@@ -69,6 +70,7 @@ function App() {
         {/* Fin New Servicio */}
 
         <Route path="*" element={<NotFound />} />
+        <Route path="/profile" element={<ProfileSection />} />
       </Routes>
       <Footer />
     </BrowserRouter>

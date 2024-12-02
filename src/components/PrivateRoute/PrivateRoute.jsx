@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ component: Component, requiredRole, ...rest }) => {
-    const [role, setRole] = useState(null);
+    const [role, setRole] = useState(localStorage.getItem("typeRole"));
 
     useEffect(() => {
-        const storedRoleId = localStorage.getItem("typeRole");
-        setRole(storedRoleId);
-    }, []);
+        if (!role) {
+            setRole(null);
+        }
+    }, [role]);
 
-    if (role === null) {
-        return <div>Loading...</div>;
+    if (!role ) {
+        // setTimeout(() => {
+            <Navigate to="/LoginRegister" replace />;
+        // }, 5000);
     }
 
     const isAllowed = requiredRole.includes(role);
