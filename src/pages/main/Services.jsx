@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaStar, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { MdWeb, MdDesignServices, MdOutlineSupport } from "react-icons/md";
 import { useLocation, Navigate } from 'react-router-dom';
+import PaypalButton from "./Paypal/PlanButton";
 
 
 const Services = () => {
@@ -33,17 +34,17 @@ const Services = () => {
   const plans = [
     {
       name: "Basic",
-      price: "$99",
+      price: "99",
       features: ["5 Pages", "Basic SEO", "Mobile Responsive", "24/7 Support"]
     },
     {
       name: "Professional",
-      price: "$199",
+      price: "199",
       features: ["10 Pages", "Advanced SEO", "Mobile Responsive", "24/7 Priority Support", "Custom Features"]
     },
     {
       name: "Enterprise",
-      price: "$399",
+      price: "399",
       features: ["Unlimited Pages", "Premium SEO", "Mobile Responsive", "24/7 VIP Support", "Custom Features", "API Integration"]
     }
   ];
@@ -145,7 +146,7 @@ const Services = () => {
               className={`bg-white p-6 rounded-lg shadow-lg transition-transform hover:-translate-y-1 ${selectedPlan === plan ? "ring-2 ring-blue-500" : ""}`}
             >
               <h3 className="text-2xl font-bold text-center mb-4">{plan.name}</h3>
-              <p className="text-3xl font-bold text-center text-blue-600 mb-6">{plan.price}</p>
+              <p className="text-3xl font-bold text-center text-blue-600 mb-6">${plan.price}</p>
               <ul className="space-y-3 mb-6">
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center text-gray-600">
@@ -156,12 +157,7 @@ const Services = () => {
                   </li>
                 ))}
               </ul>
-              <button
-                onClick={() => handlePurchase(plan)}
-                className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                Buy Now
-              </button>
+              <PaypalButton totalValue={plan.price} invoice={plan.name}/>
             </div>
           ))}
         </div>
