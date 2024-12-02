@@ -104,7 +104,7 @@ const Home = () => {
       nextClick: "/categories/writing",
     },
   ]; */
-  
+
   //Featured Services
   const [featuredServices, setFeaturedServices] = useState([]);
 
@@ -123,7 +123,7 @@ const Home = () => {
         setLoading(false);
       }
     };
-  
+
     fetchFeaturedServices();
   }, []);
   console.log(featuredServices);
@@ -165,7 +165,6 @@ const Home = () => {
       return () => clearInterval(interval);
     }
   }, [testimonials.length]);
-  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -183,16 +182,14 @@ const Home = () => {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-bold mb-6"
-          >
+            className="text-5xl md:text-6xl font-bold mb-6">
             Find the Perfect Freelancer
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl mb-8"
-          >
+            className="text-xl mb-8">
             Get your projects done by world-class talent
           </motion.p>
           <motion.button
@@ -200,8 +197,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300"
-            onClick={scrollToSection}
-          >
+            onClick={scrollToSection}>
             Explore Services
           </motion.button>
         </div>
@@ -218,8 +214,7 @@ const Home = () => {
               key={category.id}
               onClick={() => navigate(category.nextClick)}
               whileHover={{ scale: 1.05 }}
-              className="bg-white p-6 rounded-xl shadow-lg text-center cursor-pointer transition-all duration-300"
-            >
+              className="bg-white p-6 rounded-xl shadow-lg text-center cursor-pointer transition-all duration-300">
               <div className="text-3xl text-blue-600 mb-4">{category.icon}</div>
               <h3 className="font-semibold mb-2">{category.name}</h3>
               <p className="text-sm text-gray-600">{category.count}</p>
@@ -240,8 +235,7 @@ const Home = () => {
                 key={service.id}
                 onClick={() => navigate(service.nextClick)}
                 whileHover={{ y: -10 }}
-                className="bg-white rounded-xl overflow-hidden shadow-lg"
-              >
+                className="bg-white rounded-xl overflow-hidden shadow-lg">
                 <img
                   src={`https://${service.image}`}
                   alt={service.title}
@@ -279,32 +273,37 @@ const Home = () => {
               <motion.div
                 animate={{ x: `-${currentTestimonial * 100}%` }}
                 transition={{ duration: 0.5 }}
-                className="flex"
-              >
-              {testimonials.map((testimonial) => (
-                <div
-                  key={testimonial.id}
-                  className="w-full flex-shrink-0 px-4 md:px-20"
-                >
-                  <div className="bg-white p-8 rounded-xl shadow-lg text-center">
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.user.name}
-                      className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
-                    />
-                    <p className="text-gray-600 text-lg mb-4">
-                      {testimonial.content}
-                    </p>
-                    <div className="flex justify-center mb-2">
-                      {[...Array(testimonial.rating)].map((_, index) => (
-                        <FaStar key={index} className="text-yellow-400" />
-                      ))}
+                className="flex">
+                {testimonials.map((testimonial) => (
+                  <div
+                    key={testimonial.id}
+                    className="w-full flex-shrink-0 px-4 md:px-20">
+                    <div className="bg-white p-8 rounded-xl shadow-lg text-center">
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.user.name}
+                        className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+                      />
+                      <p className="text-gray-600 text-lg mb-4">
+                        {testimonial.content}
+                      </p>
+                      <div className="flex justify-center mb-2">
+                        {testimonial.rating > 0 ? (
+                          [...Array(Math.round(testimonial.rating))].map(
+                            (_, index) => (
+                              <FaStar key={index} className="text-yellow-400" />
+                            )
+                          )
+                        ) : (
+                          <span>No rating available</span>
+                        )}
+                      </div>
+
+                      <h4 className="font-semibold">{testimonial.user.name}</h4>
+                      <p className="text-gray-500">{testimonial.role}</p>
                     </div>
-                    <h4 className="font-semibold">{testimonial.user.name}</h4>
-                    <p className="text-gray-500">{testimonial.role}</p>
                   </div>
-                </div>
-              ))}
+                ))}
               </motion.div>
             ) : (
               !loading && <p>No testimonials available.</p>
