@@ -1,6 +1,6 @@
 const BASE_URL =
   "https://market-lancer-back-dotnet-production-b498.up.railway.app";
-const BASE_URL2 = "http://localhost:5000";
+const BASE_URL2 = "https://backend-marketlancer.onrender.com";
 
 export const API_ENDPOINTS = {
   //CATEGORY
