@@ -112,7 +112,17 @@ const LoginRegister = () => {
       console.log("code Data:", data);
       if (data.status) {
         setErrorMessage("");
-        window.location.href = "/";
+        localStorage.setItem("isLogin", JSON.stringify(true));
+        if (data.respuesta.id_role_id == 3) {
+          localStorage.setItem("typeRole", "admin");
+        } else if (data.id_role_id == 2) {
+          localStorage.setItem("typeRole", "freelancer");
+        } else {
+          localStorage.setItem("typeRole", "client");
+        }
+        const typeRole = localStorage.getItem("typeRole"); // Devuelve el rol como string
+        console.log("rol---> ", typeRole);
+        //window.location.href = "/";
       } else {
         setErrorMessage(
           "El Codigo no es correcto. Por favor, inténtalo de nuevo."
