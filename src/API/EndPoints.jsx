@@ -74,7 +74,7 @@ export const API_ENDPOINTS = {
     GET_BY_ID: (serviceId) =>
       `${BASE_URL}/api/service/serviceById/${serviceId}`,
     CREATE: `${BASE_URL}/api/service/createService`,
-    UPDATE: `${BASE_URL}/api/service/updateService`,
+    UPDATE: (serviceId) => `${BASE_URL}/api/service/updateService/${serviceId}`,
     DELETE: (serviceId) => `${BASE_URL}/api/service/deleteService/${serviceId}`,
   },
   //USER

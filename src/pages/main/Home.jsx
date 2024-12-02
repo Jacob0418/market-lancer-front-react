@@ -114,7 +114,7 @@ const Home = () => {
         const data = await ApiService.getServices();
         const enrichedData = data.result.map((service) => ({
           ...service,
-          nextClick: `/categories/${service.name}`, // Genera un nextClick dinámico
+          nextClick: `/categories/${service.nextClick}`, // Genera un nextClick dinámico
         }));
         setFeaturedServices(enrichedData);
       } catch (err) {

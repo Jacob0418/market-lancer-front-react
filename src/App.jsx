@@ -15,8 +15,12 @@ import Design from "./pages/main/Categories/Desing";
 import Footer from "./components/Footer/Footer";
 import LoginRegister from "./components/Login/LoginRegister";
 import NotFound from "./pages/NotFound/NotFound";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 function App() {
+
+  const role = localStorage.getItem("typeRole");
+
   return (
     <BrowserRouter>
       <Navbar />
@@ -24,7 +28,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/LoginRegister" element={<LoginRegister />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/categories/development" element={<Development />} />
+        <Route path="/categories/development" element={<Development/>}/>
         <Route path="/categories/writing" element={<Writing />} />
         <Route path="/categories/photography" element={<Photography />} />
         <Route
@@ -32,7 +36,7 @@ function App() {
           element={<DigitalMarketing />}
         />
         <Route path="/categories/design" element={<Design />} />
-        <Route path="/services/:context" element={<Services />} />
+        <Route path="/services/:context" element={<PrivateRoute component={<Services/>} requiredRole={["client", "freelancer"]} />} />
 
         {/* Inicio New Vendedor */}
         <Route path="/seller_onboarding/overview" element={<Overview />} />
@@ -51,6 +55,8 @@ function App() {
         <Route path="/seller_onboarding/professional_info" element={<Home />} />
         <Route path="/seller_onboarding/account_security" element={<Home />} /> */}
         {/* Fin New Servicio */}
+
+        
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer/>

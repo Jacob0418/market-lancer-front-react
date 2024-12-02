@@ -92,7 +92,7 @@ const Design = () => {
 
   return (
     <ServiceCategory
-      title="Desing"
+      title="Design"
       description="Discover top-rated development services tailored to your needs"
       categories={categories}
       services={services}
