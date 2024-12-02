@@ -32,7 +32,7 @@ const ServiceCategory = ({ name, title, description, categories, services }) => 
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-4">{name}</h1>
+      <h1 className="text-4xl font-bold mb-4">{title}</h1>
       <p className="text-gray-600 mb-8">{description}</p>
 
       {/* Categories Carousel */}
@@ -79,7 +79,7 @@ const ServiceCategory = ({ name, title, description, categories, services }) => 
         {filteredServices.map((service) => (
           <div
             key={service.id}
-            onClick={() => handleCardClick(service.id, service.name)}
+            onClick={() => handleCardClick(service.id, service.title)}
             className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105"
           >
             <img
@@ -88,7 +88,7 @@ const ServiceCategory = ({ name, title, description, categories, services }) => 
               className="w-full h-48 object-cover"
             />
             <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">{service.name}</h3>
+              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
               <p className="text-gray-600 mb-4"></p>
               <div className="flex items-center mb-4">
                 <div className="flex text-yellow-400">

@@ -63,6 +63,7 @@ const RegisterFreelancer = () => {
         if (data.status) {
           localStorage.setItem("typeRole", "freelancer");
           alert("Información guardada exitosamente");
+          window.location.href = "/freelancer/dashboard";
         } else {
           alert("Error al guardar la información: " + data.message);
         }

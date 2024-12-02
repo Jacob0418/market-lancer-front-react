@@ -23,7 +23,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const LoginRegister = () => {
   const navigate = useNavigate();
-
+  const typeRole = localStorage.getItem("typeRole"); // Devuelve el rol como string
+  console.log("rol antes---> ", typeRole);
   const [formData, setFormData] = useState({
     email: "",
     pass: "",
