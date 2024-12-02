@@ -49,19 +49,42 @@ function App() {
         />
 
         {/* Inicio New Vendedor */}
-        <Route path="/seller_onboarding/overview" element={<Overview />} />
-        <Route path="/seller_onboarding/overview/do" element={<Do />} />
-        <Route path="/seller_onboarding/overview/dont" element={<Dont />} />
+        <Route
+          path="/seller_onboarding/overview"
+          element={
+            <PrivateRoute component={<Overview />} requiredRole={["client"]} />
+          }
+        />
+        <Route
+          path="/seller_onboarding/overview/do"
+          element={
+            <PrivateRoute component={<Do />} requiredRole={["client"]} />
+          }
+        />
+        <Route
+          path="/seller_onboarding/overview/dont"
+          element={
+            <PrivateRoute component={<Dont />} requiredRole={["client"]} />
+          }
+        />
         <Route
           path="/seller_onboarding/personal_info"
           element={
             <PrivateRoute
               component={<RegisterFreelancer />}
-              requiredRole={["client", "freelancer"]}
+              requiredRole={["client"]}
             />
           }
         />
-        <Route path="/freelancer/dashboard" element={<FreelancerDashboard />} />
+        <Route
+          path="/freelancer/dashboard"
+          element={
+            <PrivateRoute
+              component={<FreelancerDashboard />}
+              requiredRole={["freelancer"]}
+            />
+          }
+        />
         <Route path="/seller_onboarding/account_security" element={<Home />} />
         {/* Fin New Vendedor */}
 
@@ -75,7 +98,15 @@ function App() {
         {/* Fin New Servicio */}
 
         <Route path="*" element={<NotFound />} />
-        <Route path="/profile" element={<ProfileSection />} />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute
+              component={<ProfileSection />}
+              requiredRole={["freelancer"]}
+            />
+          }
+        />
       </Routes>
       <Footer />
     </BrowserRouter>

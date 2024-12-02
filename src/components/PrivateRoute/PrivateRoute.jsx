@@ -6,7 +6,7 @@ const PrivateRoute = ({ component: Component, requiredRole, ...rest }) => {
 
     useEffect(() => {
         if (!role) {
-            setRole(null);
+            setRole('visitante');
         }
     }, [role]);
 
