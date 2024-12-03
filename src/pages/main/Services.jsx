@@ -157,7 +157,9 @@ const Services = () => {
                   </li>
                 ))}
               </ul>
-              <PaypalButton totalValue={plan.price} invoice={plan.name}/>
+              <div className="relative z-10">
+                <PaypalButton totalValue={plan.price} invoice={plan.name}/>
+              </div>
             </div>
           ))}
         </div>

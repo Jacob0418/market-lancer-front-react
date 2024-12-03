@@ -80,7 +80,7 @@ const ServiceCategory = ({ name, title, description, categories, services }) => 
           <div
             key={service.id}
             onClick={() => handleCardClick(service.id, service.title)}
-            className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105"
+            className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105 cursor-pointer"
           >
             <img
               src={`https://${service.image}`}

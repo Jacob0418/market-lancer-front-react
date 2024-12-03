@@ -241,7 +241,7 @@ const Home = () => {
                   alt={service.title}
                   className="w-full h-48 object-cover"
                 />
-                <div className="p-6">
+                <div className="p-6 cursor-pointer">
                   <h3 className="text-xl font-semibold mb-2">
                     {service.subCategory}
                   </h3>
